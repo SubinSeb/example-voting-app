@@ -2,7 +2,9 @@ FROM 10.1.1.6:443/docker-local/node
 
 WORKDIR /app
 
-RUN npm install -g nodemon
+RUN apt update
+  && apt upgrade
+  && npm install -g nodemon
 
 COPY package*.json ./
 
