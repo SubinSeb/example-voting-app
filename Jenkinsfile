@@ -10,8 +10,8 @@ pipeline {
       steps {
         withDockerRegistry(credentialsId: '2d946ebb-4b0c-4a32-8756-f115273f9f61', url:'https://10.1.1.6:443/docker-local') {
           sh '''sudo su
-              docker build -t 10.1.1.6:443/dockersamples/com_result:latest ./result --disable-content-trust=0 --no-cache --pull
-              trivy image --light --exit-code 1 --no-progress 10.1.1.6:443/dockersamples/com_result:latest '''
+             # docker build -t 10.1.1.6:443/dockersamples/com_result:latest ./result --disable-content-trust=0 --no-cache --pull
+             # trivy image --light --exit-code 1 --no-progress 10.1.1.6:443/dockersamples/com_result:latest '''
         }  
       }
     } 
@@ -40,7 +40,7 @@ pipeline {
               export DOCKER_CONTENT_TRUST_SERVER='https://10.1.1.6:4443'
               export DOCKER_CONTENT_TRUST_ROOT_PASSPHRASE=$fbc9c4e4-eac7-417e-b3c4-c4b1005386db
               export DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=$fbc9c4e4-eac7-417e-b3c4-c4b1005386db
-              docker push 10.1.1.6:443/dockersamples/com_result:latest --disable-content-trust=0'''
+             # docker push 10.1.1.6:443/dockersamples/com_result:latest --disable-content-trust=0'''
         }
       }
     }
