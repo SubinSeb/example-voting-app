@@ -20,7 +20,7 @@ pipeline {
         withDockerRegistry(credentialsId: '2d946ebb-4b0c-4a32-8756-f115273f9f61', url:'https://10.1.1.6:443/docker-local') {
           sh '''sudo su
              docker build -t 10.1.1.6:443/dockersamples/com_vote:latest ./vote --disable-content-trust=0 --no-cache --pull
-             trivy image --light --exit-code 1 --no-progress 10.1.1.6:443/dockersamples/com_vote:latest '''
+             trivy image --light --exit-code 1 --severity CRITICAL --no-progress 10.1.1.6:443/dockersamples/com_vote:latest '''
         }  
       }
     }
