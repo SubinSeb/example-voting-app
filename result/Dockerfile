@@ -8,7 +8,7 @@ COPY package*.json ./
 
 RUN npm ci \
  && npm cache clean --force \
- && mv /app/node_modules /node_modules
+# && mv /app/node_modules /node_modules
 
 #COPY . .
 
