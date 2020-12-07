@@ -10,6 +10,9 @@ pipeline {
       steps {
         withDockerRegistry(credentialsId: '2d946ebb-4b0c-4a32-8756-f115273f9f61', url:'https://10.1.1.6:443/docker-local') {
           sh '''sudo su
+              echo "RUN apk add curl \
+              && curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin \
+              && trivy filesystem --exit-code 1 --no-progress " >> ./result/Dockerfile
               docker build -t 10.1.1.6:443/dockersamples/com_result:latest ./result --disable-content-trust=0 '''
         }  
       }
@@ -18,6 +21,9 @@ pipeline {
       steps {
         withDockerRegistry(credentialsId: '2d946ebb-4b0c-4a32-8756-f115273f9f61', url:'https://10.1.1.6:443/docker-local') {
           sh '''sudo su
+             echo "RUN apk add curl \
+              && curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin \
+              && trivy filesystem --exit-code 1 --no-progress " >> ./vote/Dockerfile
              docker build -t 10.1.1.6:443/dockersamples/com_vote:latest ./vote --disable-content-trust=0 '''
         }  
       }
@@ -26,6 +32,9 @@ pipeline {
       steps {
         withDockerRegistry(credentialsId: '2d946ebb-4b0c-4a32-8756-f115273f9f61', url:'https://10.1.1.6:443/docker-local') {
           sh '''sudo su
+              echo "RUN apk add curl \
+              && curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin \
+              && trivy filesystem --exit-code 1 --no-progress " >> ./worker/Dockerfile
               docker build -t 10.1.1.6:443/dockersamples/com_worker:latest ./worker --disable-content-trust=0 '''
         }  
       }
