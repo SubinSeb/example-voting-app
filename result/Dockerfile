@@ -1,4 +1,4 @@
-FROM 10.1.1.6:443/docker-local/node
+FROM 10.47.164.49:443/docker-local/node
 
 WORKDIR /app
 
